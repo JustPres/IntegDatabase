@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #fdfdfd, #868886, #585650, #0a0a09);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+nav {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 2rem !important; /* Increased vertical padding from 0.3rem to 0.8rem */
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0 !important; /* Override Bootstrap margin */
+    padding: 0 !important; /* Override Bootstrap padding */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0 !important; /* Override Bootstrap padding */
+    display: flex;
+    align-items: center;
+}
+
+/* Add this to reset Bootstrap's li styles */
+nav ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.main-nav a:hover {
+    color: #6b6657;
+}
+.main-nav > ul > li.active > a{  /* this is new, what this does is access the first List and Color the text */
+    color: #000000;
+    cursor: default;
+}
+
+
+/*-------------------------------------------*/
+@media (max-width: 425px) {
+    .main-nav ul{
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+     }
+     
+ }
+ 
+
+ @media (max-width: 3840px) {
+    nav a img{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 700px) {
+    nav a img{
+        display: block;
+    }
+    
+}
+
+@media (max-width: 700px) {
+
+    nav a .index{
+        display: none;
+    }
+    nav a .tech-stack{
+        display: none;
+    }
+    nav a .cert{ 
+        display: none;
+    }
+    nav a .exp{
+        display: none;
+    }
+    nav a .blog{
+        display: none;
+    }
+    nav a .info{
+        display: none;
+    }
+    nav a .phone{
+        display: none;
+    }
+    nav a .docu{
+        display: none;
+}
+} 
+.section-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.certificates-section {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certificates-grid {
+    display: flex; /* Use flexbox for row layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+    justify-content: center; /* Center the items horizontally */
+    gap: 2rem; /* Add spacing between items */
+    padding: 0 1rem;
+}
+
+.certificate-card {
+    position: relative;
+    width: 300px;
+    background: transparent; /* Transparent background */
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
+    margin: 0 auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Optional: Add a soft shadow */
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    cursor: grab;
+}
+
+.certificate-card:hover .cert-thumbnail {
+    transform: scale(1.05);
+}
+
+.certificate-preview {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.cert-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.certificate-info {
+    padding: 1rem;
+    color: white;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Darker background */
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%; /* Change to 100% width */
+    height: 100%; /* Change to 100% height */
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain; /* Keep contain to maintain aspect ratio */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: transparent; /* Change to transparent */
+    padding: 0; /* Remove padding */
+}
+#caption {
+    margin: 15px auto;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .modal {
+        display: none; /* Ensure the modal is hidden by default */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        padding: 1rem; /* Add padding to prevent the image from touching the edges */
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 80vh;
+        border-radius: 10px; /* Keep rounded corners */
+    }
+
+    .close {
+        top: 10px; /* Adjust close button position for mobile */
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .certificates-section {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .certificates-grid {
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .certificate-preview {
+        height: 180px;
+    }
+    
+    .cert-thumbnail {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) { /*I do not think this works, might remove it later :)*/
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    
+    .certificate-card {
+        margin: 0 0.25rem;
+    }
+    
+    .certificate-actions {
+        flex-direction: column;
+        padding: 0.75rem;
+    }
+}
+
+@media (hover: none) {
+    .certificate-card:hover {
+        transform: none;
+    }
+    
+    .cert-thumbnail:hover {
+        transform: none;
+        cursor: default;
+    }
+}
